@@ -9,21 +9,59 @@ import '../styles/tailwind.css';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio</title>
   </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen">
-    <main class="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-6 px-6 text-center">
-      <span class="rounded-full bg-slate-900 px-3 py-1 text-sm font-medium uppercase tracking-wide text-emerald-300">Hello, Astro</span>
-      <h1 class="text-balance text-4xl font-bold sm:text-5xl">Welcome to your new Astro + Tailwind project</h1>
-      <p class="text-lg text-slate-300">
-        Get started by editing <code class="rounded bg-slate-900 px-2 py-1 text-slate-200">src/pages/index.astro</code>.
-      </p>
-      <a
-        class="rounded-lg bg-emerald-400 px-5 py-3 text-base font-semibold text-slate-950 transition hover:bg-emerald-300"
-        href="https://docs.astro.build/en/getting-started/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Read the docs
-      </a>
-    </main>
-  </body>
+<body>
+  <main class="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-20">
+    <section class="grid gap-10 rounded-[2.5rem] bg-white/80 p-12 text-center shadow-glow backdrop-blur">
+      <span class="mx-auto inline-flex items-center gap-2 rounded-full bg-aurora-sky/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-aurora-midnight">
+        <span class="h-2 w-2 rounded-full bg-aurora-ember"></span>
+        Nueva vibra creativa
+      </span>
+      <div class="space-y-6">
+        <h1 class="text-balance text-4xl font-semibold leading-tight sm:text-5xl">Diseña historias visuales con personalidad</h1>
+        <p class="mx-auto max-w-2xl text-lg leading-relaxed text-aurora-midnight/80">
+          Un portafolio elegante alimentado por Tailwind 4 y una paleta inspirada en tonos atlánticos y destellos cálidos.
+          Combina tipografías sofisticadas con colores vibrantes para presentar tus proyectos con estilo.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+        <a
+          class="rounded-full bg-aurora-royal px-6 py-3 text-base font-semibold text-aurora-dawn shadow-pill transition hover:-translate-y-0.5 hover:bg-aurora-midnight"
+          href="https://docs.astro.build/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Explorar Astro
+        </a>
+        <a
+          class="inline-flex items-center gap-2 rounded-full border border-aurora-midnight/15 px-6 py-3 text-base text-aurora-midnight transition hover:border-aurora-midnight/30 hover:text-aurora-royal"
+          href="https://tailwindcss.com/docs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Guía de Tailwind 4
+        </a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div class="rounded-3xl border border-aurora-midnight/10 bg-white/60 p-5 text-left shadow-sm">
+          <h2 class="text-lg font-semibold text-aurora-midnight">Paleta Aurora</h2>
+          <p class="mt-2 text-sm leading-relaxed text-aurora-midnight/70">
+            Azul profundo, violeta suave, cielo brumoso, arenas doradas y destellos de bronce.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-aurora-midnight/10 bg-white/60 p-5 text-left shadow-sm">
+          <h2 class="text-lg font-semibold text-aurora-midnight">Tipografías con estilo</h2>
+          <p class="mt-2 text-sm leading-relaxed text-aurora-midnight/70">
+            Playfair Display aporta elegancia a los encabezados y Manrope mantiene la lectura limpia.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-aurora-midnight/10 bg-white/60 p-5 text-left shadow-sm">
+          <h2 class="text-lg font-semibold text-aurora-midnight">Listo para personalizar</h2>
+          <p class="mt-2 text-sm leading-relaxed text-aurora-midnight/70">
+            Ajusta componentes y colores para que cada proyecto refleje tu personalidad creativa.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
 </html>
