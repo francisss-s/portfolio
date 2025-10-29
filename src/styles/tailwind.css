@@ -1,3 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+@import 'tailwindcss';
+
+@source '../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}';
+
+@theme {
+  --font-sans: 'Manrope', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
+
+  --color-aurora-midnight: #575373;
+  --color-aurora-royal: #3B478C;
+  --color-aurora-sky: #6698D9;
+  --color-aurora-dawn: #F2DDB6;
+  --color-aurora-ember: #A67A46;
+
+  --shadow-glow: 0 40px 90px -40px rgba(59, 71, 140, 0.55);
+  --shadow-pill: 0 20px 40px -24px rgba(59, 71, 140, 0.45);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply min-h-screen bg-gradient-to-br from-aurora-midnight/10 via-aurora-dawn/60 to-white font-sans text-aurora-midnight antialiased;
+    background-image:
+      radial-gradient(55% 60% at 12% 8%, rgba(102, 152, 217, 0.35), transparent),
+      radial-gradient(45% 45% at 88% 12%, rgba(59, 71, 140, 0.28), transparent),
+      radial-gradient(60% 55% at 50% 92%, rgba(166, 122, 70, 0.22), transparent);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display text-aurora-midnight;
+  }
+
+  a {
+    @apply text-aurora-royal transition-colors duration-200;
+  }
+
+  ::selection {
+    background-color: rgba(59, 71, 140, 0.35);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .backdrop-aurora {
+    background-image:
+      radial-gradient(140% 120% at 20% 20%, rgba(102, 152, 217, 0.25), transparent 65%),
+      radial-gradient(120% 120% at 85% 0%, rgba(242, 221, 182, 0.45), transparent 70%),
+      radial-gradient(160% 120% at 50% 100%, rgba(166, 122, 70, 0.35), transparent 75%);
+  }
+}

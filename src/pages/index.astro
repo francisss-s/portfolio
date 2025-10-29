@@ -3,27 +3,134 @@ import '../styles/tailwind.css';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio</title>
   </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen">
-    <main class="mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center gap-6 px-6 text-center">
-      <span class="rounded-full bg-slate-900 px-3 py-1 text-sm font-medium uppercase tracking-wide text-emerald-300">Hello, Astro</span>
-      <h1 class="text-balance text-4xl font-bold sm:text-5xl">Welcome to your new Astro + Tailwind project</h1>
-      <p class="text-lg text-slate-300">
-        Get started by editing <code class="rounded bg-slate-900 px-2 py-1 text-slate-200">src/pages/index.astro</code>.
-      </p>
-      <a
-        class="rounded-lg bg-emerald-400 px-5 py-3 text-base font-semibold text-slate-950 transition hover:bg-emerald-300"
-        href="https://docs.astro.build/en/getting-started/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Read the docs
-      </a>
+  <body>
+    <main class="relative isolate flex min-h-screen flex-col justify-center overflow-hidden px-6 py-16 md:py-24">
+      <div class="pointer-events-none absolute inset-0 -z-10 backdrop-aurora">
+        <div class="absolute left-1/2 top-[-14%] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-aurora-royal/45 blur-3xl"></div>
+        <div class="absolute right-[6%] top-[20%] h-72 w-72 rounded-full bg-aurora-sky/35 blur-[130px]"></div>
+        <div class="absolute bottom-[-18%] left-[12%] h-[28rem] w-[28rem] rounded-full bg-aurora-ember/35 blur-[140px]"></div>
+      </div>
+
+      <section class="relative mx-auto w-full max-w-5xl space-y-14 rounded-[46px] border border-white/25 bg-white/80 p-10 shadow-glow backdrop-blur-2xl md:p-16">
+        <header class="flex flex-col gap-6 text-center md:text-left">
+          <span class="mx-auto inline-flex items-center gap-2 self-start rounded-full border border-aurora-midnight/10 bg-aurora-dawn/70 px-5 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-aurora-midnight shadow-pill md:mx-0">
+            Tema Aurora 4
+          </span>
+          <div class="space-y-4">
+            <h1 class="text-balance text-4xl font-semibold leading-[1.05] text-aurora-midnight sm:text-5xl md:text-6xl">
+              Diseña historias visuales con personalidad
+            </h1>
+            <p class="mx-auto max-w-3xl text-pretty text-base leading-relaxed text-aurora-midnight/80 md:text-lg">
+              Un portafolio elegante alimentado por Tailwind CSS v4, inspirado en luces del norte y destellos cálidos. Conecta tus proyectos con una narrativa visual fresca, tipografías contrastantes y detalles brillantes.
+            </p>
+          </div>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-4 md:justify-start">
+          <a
+            class="group inline-flex items-center gap-2 rounded-full bg-aurora-royal px-8 py-3 text-base font-semibold text-aurora-dawn shadow-pill transition duration-200 hover:-translate-y-0.5 hover:bg-aurora-midnight"
+            href="https://docs.astro.build/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Explorar Astro
+            <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+          </a>
+          <a
+            class="inline-flex items-center gap-2 rounded-full border border-aurora-midnight/15 px-8 py-3 text-base font-semibold text-aurora-midnight transition duration-200 hover:border-aurora-midnight/40 hover:text-aurora-royal"
+            href="https://tailwindcss.com/docs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Guía de Tailwind 4
+          </a>
+        </div>
+
+        <div class="grid gap-12 lg:grid-cols-[1.3fr,0.7fr]">
+          <div class="space-y-8">
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <article class="flex flex-col gap-3 rounded-3xl border border-aurora-midnight/10 bg-white/75 p-6 shadow-sm">
+                <span class="h-10 w-10 rounded-full bg-aurora-sky/40 shadow-inner"></span>
+                <h2 class="text-lg font-semibold text-aurora-midnight">Paleta inmersiva</h2>
+                <p class="text-sm leading-relaxed text-aurora-midnight/70">
+                  Combina tonos atlánticos y acentos bronce para un ambiente sofisticado que destaca proyectos creativos.
+                </p>
+              </article>
+              <article class="flex flex-col gap-3 rounded-3xl border border-aurora-midnight/10 bg-white/75 p-6 shadow-sm">
+                <span class="h-10 w-10 rounded-full bg-aurora-royal/45 shadow-inner"></span>
+                <h2 class="text-lg font-semibold text-aurora-midnight">Componentes expresivos</h2>
+                <p class="text-sm leading-relaxed text-aurora-midnight/70">
+                  Botones suaves, sombras difusas y fondos translúcidos generan una experiencia limpia y moderna.
+                </p>
+              </article>
+              <article class="flex flex-col gap-3 rounded-3xl border border-aurora-midnight/10 bg-white/75 p-6 shadow-sm">
+                <span class="h-10 w-10 rounded-full bg-aurora-ember/40 shadow-inner"></span>
+                <h2 class="text-lg font-semibold text-aurora-midnight">Animada por Tailwind 4</h2>
+                <p class="text-sm leading-relaxed text-aurora-midnight/70">
+                  Utiliza la nueva generación de utilidades para iterar más rápido, con tokens y layouts listos para personalizar.
+                </p>
+              </article>
+            </div>
+
+            <div class="rounded-3xl border border-aurora-midnight/10 bg-white/75 p-8 shadow-sm">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h2 class="text-lg font-semibold text-aurora-midnight">Paleta Aurora</h2>
+                <p class="text-sm text-aurora-midnight/70">Ordenada para equilibrar profundidad, brillo y calidez.</p>
+              </div>
+              <div class="mt-6 grid gap-4 sm:grid-cols-5">
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <span class="h-16 w-full rounded-2xl bg-aurora-midnight"></span>
+                  <span class="text-xs font-semibold uppercase tracking-[0.25em] text-aurora-midnight/80">Midnight</span>
+                  <span class="font-mono text-[11px] text-aurora-midnight/60">#575373</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <span class="h-16 w-full rounded-2xl bg-aurora-royal"></span>
+                  <span class="text-xs font-semibold uppercase tracking-[0.25em] text-aurora-midnight/80">Royal</span>
+                  <span class="font-mono text-[11px] text-aurora-midnight/60">#3B478C</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <span class="h-16 w-full rounded-2xl bg-aurora-sky"></span>
+                  <span class="text-xs font-semibold uppercase tracking-[0.25em] text-aurora-midnight/80">Sky</span>
+                  <span class="font-mono text-[11px] text-aurora-midnight/60">#6698D9</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <span class="h-16 w-full rounded-2xl bg-aurora-dawn"></span>
+                  <span class="text-xs font-semibold uppercase tracking-[0.25em] text-aurora-midnight/80">Dawn</span>
+                  <span class="font-mono text-[11px] text-aurora-midnight/60">#F2DDB6</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <span class="h-16 w-full rounded-2xl bg-aurora-ember"></span>
+                  <span class="text-xs font-semibold uppercase tracking-[0.25em] text-aurora-midnight/80">Ember</span>
+                  <span class="font-mono text-[11px] text-aurora-midnight/60">#A67A46</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="flex h-full flex-col gap-8 rounded-3xl bg-aurora-midnight/95 p-8 text-aurora-dawn shadow-[0_45px_90px_-45px_rgba(59,71,140,0.65)] sm:p-10">
+            <div class="space-y-4">
+              <h2 class="text-2xl font-display text-aurora-dawn">Tipografías con carácter</h2>
+              <p class="text-sm leading-relaxed text-aurora-dawn/80">
+                Playfair Display aporta un toque editorial a los encabezados, mientras que Manrope garantiza lectura pulida en párrafos y llamadas a la acción.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-5 text-sm leading-relaxed text-aurora-dawn/80">
+              <p class="font-display text-xl text-white">Playfair Display</p>
+              <p class="mt-2 font-sans text-xs uppercase tracking-[0.4em] text-aurora-dawn/70">Manrope Regular</p>
+              <p class="mt-4">
+                Ajusta pesos y tamaños con utilidades de Tailwind 4 para lograr jerarquías dinámicas y consistentes.
+              </p>
+            </div>
+            <p class="text-xs uppercase tracking-[0.5em] text-aurora-dawn/60">Listo para personalizar</p>
+          </aside>
+        </div>
+      </section>
     </main>
   </body>
 </html>
