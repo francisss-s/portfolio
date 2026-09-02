@@ -1,17 +1,22 @@
-# Plan técnico — Home
+# Plan técnico — Portafolio multipágina
 
 **Estado:** Approved  
-**Alcance:** únicamente la ruta `/`, según `HOMEPAGE.md`.
+**Alcance:** `/`, `/proyectos`, `/proyectos/:slug`, `/trayectoria` y `/perfil`.
 
 ## Decisión
 
-Implementar la home como Route Module delgado que compone una feature `portfolio-home`. El contenido profesional vivirá en una fuente TypeScript tipada; los datos opcionales de correo y CV controlarán la presencia de sus acciones. La presentación usará CSS Modules y tokens globales, con SVG original para la constelación y sin dependencias de producción adicionales.
+Mantener Route Modules delgados que componen la feature `portfolio-home`. La navegación compartida utilizará `Link` y `NavLink`; el contenido profesional seguirá en una única fuente TypeScript tipada. La home conservará presentación, evidencia, una selección de proyectos, resumen de trayectoria y contacto. Proyectos, trayectoria y perfil tendrán rutas propias con el mismo sistema visual y sin dependencias nuevas.
 
 La salida continuará siendo prerender estático de React Router, con `BASE_PATH=/portfolio` en GitHub Actions para GitHub Pages.
 
+El framework se actualiza a React Router 8.3.1 junto con React 19.2.7 o superior. El entorno verificado usa Node 24.20 y satisface el mínimo de Node 22.22 requerido por React Router 8. Los comportamientos antes controlados por future flags pasan a ser valores predeterminados y los flags se eliminan.
+
+El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigentes: ESLint 10, Vite 8, Vitest 4 y jsdom 30, junto con sus plugins y tipos compatibles. TypeScript se mantiene en 6.0.3, la versión más reciente dentro del rango soportado por `typescript-eslint` 8.69. Al ser dependencias de desarrollo, la migración no debe alterar el contenido ni el comportamiento observable del portafolio.
+
 ## Archivos
 
-- `app/routes/home.tsx`: metadata y composición de la feature.
+- `app/routes/*.tsx`: metadata y composición de cada página.
+- `app/routes.ts`: contrato de rutas públicas en español.
 - `app/content/portfolio.ts`: contenido profesional y enlaces configurables.
 - `app/features/portfolio-home/`: secciones, navegación, emblemas y estilos.
 - `app/design-system/tokens.css`: color, tipografía, espacio y movimiento.
@@ -19,9 +24,10 @@ La salida continuará siendo prerender estático de React Router, con `BASE_PATH
 
 ## Riesgos y mitigaciones
 
-- Navegación activa sin JavaScript complejo: `aria-current` y anclas visibles; el estado de sección seguirá siendo comprensible sin observadores.
+- Navegación activa: `NavLink` expondrá `aria-current` en rutas reales.
 - Mapa ornamental: SVG decorativo oculto y lista HTML equivalente.
-- GitHub Pages: solo anclas dentro de `/`, assets con base de repositorio y rutas prerenderizadas.
+- GitHub Pages: rutas declaradas y prerenderizadas bajo el `BASE_PATH` configurado.
+- Casos incompletos: las páginas de proyecto solo presentarán evidencia ya revisada, sin inventar arquitectura, estados o resultados.
 - Datos pendientes: correo y CV se omiten mientras su valor sea `null`.
 
 ## Verificación

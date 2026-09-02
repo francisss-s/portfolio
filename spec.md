@@ -1,6 +1,6 @@
 # SPEC-001 - Portafolio profesional MVP
 
-**Estado:** Draft — alcance de home aprobado para implementación  
+**Estado:** Approved — navegación multipágina aprobada para implementación
 **Propietario:** Francisco Fuentes  
 **Creado:** 2026-09-02  
 **Última actualización:** 2026-09-02  
@@ -94,13 +94,13 @@ Un proyecto `planned` o `in-progress` no puede presentarse como caso terminado n
 
 ### FR-004 - Índice de proyectos
 
-La ruta `/projects` debe listar proyectos destacados y experimentos. La clasificación debe comunicar estado y tipo de problema. El MVP no requiere búsqueda ni filtros complejos; si existen filtros, su estado debe reflejarse en la URL.
+La ruta `/proyectos` debe listar proyectos destacados y experimentos. La clasificación debe comunicar estado y tipo de problema. El MVP no requiere búsqueda ni filtros complejos; si existen filtros, su estado debe reflejarse en la URL.
 
 **Prioridad:** Should.
 
 ### FR-005 - Caso de estudio
 
-Cada ruta `/projects/:slug` publicada debe contener:
+Cada ruta `/proyectos/:slug` publicada debe contener:
 
 - resumen;
 - problema y contexto;
@@ -118,13 +118,13 @@ Cada ruta `/projects/:slug` publicada debe contener:
 
 ### FR-006 - Trayectoria profesional
 
-La home debe incluir un resumen de experiencia y `/experience` debe presentar la trayectoria ampliada. El contenido debe provenir de una fuente revisada por Francisco y coincidir con el CV vigente.
+La home debe incluir un resumen de experiencia y `/trayectoria` debe presentar la trayectoria ampliada. El contenido debe provenir de una fuente revisada por Francisco y coincidir con el CV vigente.
 
 **Prioridad:** Must.
 
 ### FR-007 - CV
 
-La ruta `/resume` debe permitir visualizar información esencial del CV y descargar el archivo vigente. La descarga debe tener nombre estable y profesional. El número telefónico no se incluirá en código o contenido estructurado público salvo aprobación explícita.
+La ruta `/cv` debe permitir visualizar información esencial del CV y descargar el archivo vigente. La descarga debe tener nombre estable y profesional. El número telefónico no se incluirá en código o contenido estructurado público salvo aprobación explícita.
 
 **Prioridad:** Must.
 
@@ -195,10 +195,11 @@ Todos los emblemas, iconos y ornamentos principales deben ser originales o conta
 | URL | Route Module sugerido | Responsabilidad | Renderizado inicial |
 | --- | --- | --- | --- |
 | `/` | `app/routes/home.tsx` | presentación y resumen | prerender |
-| `/projects` | `app/routes/projects.tsx` | índice de proyectos | prerender |
-| `/projects/:slug` | `app/routes/project-detail.tsx` | caso de estudio | prerender por slug publicado |
-| `/experience` | `app/routes/experience.tsx` | trayectoria completa | prerender |
-| `/resume` | `app/routes/resume.tsx` | CV y descarga | prerender |
+| `/proyectos` | `app/routes/projects.tsx` | índice de proyectos | prerender |
+| `/proyectos/:slug` | `app/routes/project-detail.tsx` | detalle con evidencia disponible | prerender por slug publicado |
+| `/trayectoria` | `app/routes/experience.tsx` | trayectoria completa | prerender |
+| `/perfil` | `app/routes/profile.tsx` | criterio y forma de trabajo | prerender |
+| `/cv` | `app/routes/resume.tsx` | CV y descarga, cuando exista archivo confirmado | prerender |
 | `*` | boundary o catch-all definido por el framework | 404 útil | estático cuando sea posible |
 
 La configuración canónica vive en `app/routes.ts`. Los nombres son una propuesta y pueden cambiar en el plan, pero las URLs públicas no deben modificarse sin actualizar esta especificación.
@@ -296,8 +297,8 @@ El MVP utilizará enlaces directos de contacto. Un formulario remoto añade priv
 ### AC-007 - Proyecto inexistente
 
 **Dado** un slug que no corresponde a un proyecto publicado,  
-**cuando** se solicita `/projects/:slug`,  
-**entonces** se presenta una respuesta 404 comprensible con enlace a `/projects` y `/`.
+**cuando** se solicita `/proyectos/:slug`,
+**entonces** se presenta una respuesta 404 comprensible con enlace a `/proyectos` y `/`.
 
 ### AC-008 - Actualización única
 
@@ -307,7 +308,7 @@ El MVP utilizará enlaces directos de contacto. Un formulario remoto añade priv
 
 ### AC-009 - CV
 
-**Dado** que una persona abre `/resume`,  
+**Dado** que una persona abre `/cv`,
 **cuando** activa descargar CV,  
 **entonces** obtiene el PDF vigente con nombre profesional y el enlace no devuelve error.
 
@@ -402,3 +403,4 @@ Después de la aprobación se debe crear `specs/001-portfolio-mvp/plan.md`. Toda
 | 2026-09-02 | React Router Framework Mode elegido como framework | Decisión explícita de Francisco |
 | 2026-09-02 | Prerender y contenido local tipado como defaults | Reducir complejidad y priorizar rendimiento del portafolio |
 | 2026-09-02 | Home aprobada para implementación mediante `HOMEPAGE.md` | Ejecutar solo `/`; las páginas secundarias y decisiones restantes continúan en Draft |
+| 2026-09-02 | Arquitectura multipágina y rutas públicas en español aprobadas | Reducir la densidad de la home y permitir profundizar por tema sin crear una página de contacto vacía |
