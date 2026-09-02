@@ -54,3 +54,8 @@ Toolchain verificado: ESLint 10.9.1, Vite 8.2.2, Vitest 4.1.11, jsdom 30.0.1 y T
 El caso documental pasa typecheck, lint, cinco pruebas y build. La ruta prerenderizada conserva únicamente información confirmada o formulaciones conservadoras y excluye detalles confidenciales y cifras pendientes de verificar.
 
 - [x] Reducir detalles operacionales sensibles y retirar métricas recordadas sin evidencia conservada.
+- [x] Corregir y verificar el prerender con `BASE_PATH=/portfolio` bajo React Router 8.
+
+React Router 8 requiere normalizar el basename con barra final. El build de Pages genera el árbol estático bajo `build/client/portfolio`; el workflow promueve todo ese árbol a la raíz del artefacto antes de publicarlo.
+
+- [x] Alinear desarrollo, `package.json` y GitHub Actions con Node 24.20.0 LTS.
