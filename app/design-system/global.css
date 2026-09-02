@@ -1,0 +1,14 @@
+@import './tokens.css';
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--canvas); }
+body { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--canvas); color: var(--ink); font: 400 1rem/1.65 var(--font-reading); }
+a { color: inherit; }
+button, summary { font: inherit; }
+:focus-visible { outline: none; box-shadow: var(--focus); }
+::selection { background: var(--star); color: var(--canvas); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}

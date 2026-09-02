@@ -1,0 +1,18 @@
+:root {
+  --canvas: #050b14;
+  --surface: #0b1726;
+  --surface-raised: #102238;
+  --ink: #f2f6fb;
+  --muted: #a7b8ca;
+  --line: #2a4158;
+  --star: #7dccff;
+  --metal: #b9c7d5;
+  --gold: #d2b46c;
+  --danger: #ff7b86;
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-reading: 'Source Sans 3', system-ui, sans-serif;
+  --font-data: 'IBM Plex Mono', ui-monospace, monospace;
+  --page-inline: clamp(1rem, 4vw, 4rem);
+  --content-max: 76rem;
+  --focus: 0 0 0 3px var(--canvas), 0 0 0 5px var(--star);
+}

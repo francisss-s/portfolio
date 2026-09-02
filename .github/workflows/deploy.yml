@@ -2,9 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch: {}
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,13 +17,36 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BASE_PATH: /portfolio
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v4
-      - uses: withastro/action@v2
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
-          package-manager: npm
+          node-version: 22
+          cache: pnpm
+      - name: Enable pnpm
+        run: corepack enable
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check types
+        run: pnpm run typecheck
+      - name: Run tests
+        run: pnpm run test
+      - name: Lint
+        run: pnpm run lint
+      - name: Build
+        run: pnpm run build
+      - name: Prepare GitHub Pages root
+        run: cp build/client/portfolio/index.html build/client/index.html
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: build/client
 
   deploy:
     needs: build
@@ -35,4 +57,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
