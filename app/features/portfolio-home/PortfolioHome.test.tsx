@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { afterEach, describe, expect, it } from 'vitest'
 import { MemoryRouter } from 'react-router'
-import { PortfolioHome, ProjectDetailPage, ProjectsPage } from './PortfolioHome'
+import { ExperiencePage, PortfolioHome, ProjectDetailPage, ProjectsPage } from './PortfolioHome'
 import { selectedWork } from '../../content/portfolio'
 
 afterEach(cleanup)
@@ -58,5 +58,15 @@ describe('PortfolioHome', () => {
     expect(screen.getByRole('heading', { name: 'Decisiones técnicas' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Qué cambiaría' })).toBeInTheDocument()
     expect(screen.getByText('Backend Developer responsable de la migración de esta capa')).toBeInTheDocument()
+  })
+
+  it('separa formación completada, activa e idiomas en trayectoria', () => {
+    render(<MemoryRouter><ExperiencePage /></MemoryRouter>)
+
+    expect(screen.getByRole('heading', { name: 'Formación complementaria' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Google IT Automation with Python' })).toBeInTheDocument()
+    expect(screen.getByText('EN PROGRESO')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Inglés B2 intermedio alto' })).toBeInTheDocument()
+    expect(screen.queryByText(/AWS Certified AI Practitioner/)).not.toBeInTheDocument()
   })
 })

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link, NavLink } from 'react-router'
-import { capabilities, evidence, experience, professionalLinks, selectedWork, type SelectedWork } from '../../content/portfolio'
+import { capabilities, currentLearning, evidence, experience, featuredLearning, languages, professionalLinks, selectedWork, type LearningItem, type SelectedWork } from '../../content/portfolio'
 import styles from './portfolio-home.module.css'
 
 const navigation = [['/', 'Inicio'], ['/proyectos', 'Proyectos'], ['/trayectoria', 'Trayectoria'], ['/perfil', 'Perfil']] as const
@@ -69,7 +69,11 @@ function ContentSection({ index, title, paragraphs, items }: { index: string; ti
 }
 
 export function ExperiencePage() {
-  return <SiteShell><PageIntro kicker="TRAYECTORIA" title="Del problema operacional al sistema en producción" description="Experiencia profesional, formación y certificación reunidas en una lectura directa." /><section className={styles.section}><ExperienceTimeline /></section><ContactSection /></SiteShell>
+  return <SiteShell><PageIntro kicker="TRAYECTORIA" title="Del problema operacional al sistema en producción" description="Experiencia profesional, formación y aprendizaje continuo organizados por relevancia." /><section className={styles.section}><SectionHeading index="01" title="Experiencia y formación" subtitle="Trabajo profesional, universidad y certificación cloud." /><ExperienceTimeline /></section><LearningSection index="02" title="Formación complementaria" subtitle="Una selección breve, vinculada con el trabajo que desarrollo." items={featuredLearning.filter((item) => item.kind !== 'certification')} /><LearningSection index="03" title="Actualmente estudiando" subtitle="Formación activa, diferenciada de credenciales completadas." items={currentLearning} /><LearningSection index="04" title="Idiomas" subtitle="Evaluaciones externas disponibles." items={languages} compact /><ContactSection /></SiteShell>
+}
+
+function LearningSection({ index, title, subtitle, items, compact = false }: { index: string; title: string; subtitle: string; items: LearningItem[]; compact?: boolean }) {
+  return <section className={`${styles.section} ${styles.learningSection}`}><SectionHeading index={index} title={title} subtitle={subtitle} /><div className={compact ? styles.learningCompact : styles.learningGrid}>{items.map((item) => <article key={item.title}><div className={styles.learningMeta}><span>{item.kind === 'badge' ? 'SKILL BADGE' : item.kind.toUpperCase()}</span>{item.status === 'in-progress' && <strong>EN PROGRESO</strong>}</div><h3>{item.title}</h3><p className={styles.learningProvider}>{item.provider} · {item.period}</p><p>{item.description}</p>{item.credentialUrl && <a href={item.credentialUrl}>Ver credencial <span aria-hidden="true">↗</span></a>}</article>)}</div></section>
 }
 
 export function ProfilePage() {

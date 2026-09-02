@@ -38,6 +38,16 @@ export type Capability = {
   technologies: string[]
 }
 
+export type LearningItem = {
+  title: string
+  provider: string
+  period: string
+  description: string
+  kind: 'certification' | 'program' | 'course' | 'badge' | 'diploma' | 'language'
+  status: 'completed' | 'in-progress'
+  credentialUrl?: string
+}
+
 export const professionalLinks = {
   github: 'https://github.com/francisss-s',
   linkedin: 'https://www.linkedin.com/in/francisco-alejandro-fuentes-soto/',
@@ -171,4 +181,23 @@ export const experience: ExperienceItem[] = [
   { company: 'West Ingeniería', role: 'Ingeniero de Software', period: 'Noviembre 2022 — Noviembre 2025', summary: 'Soluciones SaaS B2B para planificación productiva, MRP, logística, simulación y optimización, con participación full stack y coordinación técnica.', technologies: ['Oracle PL/SQL', 'Python', 'Full Stack'], kind: 'work' },
   { company: 'Universidad Austral de Chile', role: 'Ingeniero Civil en Informática', summary: 'Formación profesional.', technologies: [], kind: 'education' },
   { company: 'Google Cloud Certified', role: 'Associate Cloud Engineer', period: '2026', summary: 'Certificación profesional.', technologies: ['Google Cloud'], kind: 'certification' },
+]
+
+export const featuredLearning: LearningItem[] = [
+  { title: 'Google Cloud Certified: Associate Cloud Engineer', provider: 'Google Cloud', period: '2026 · vigente hasta enero de 2029', description: 'Certificación profesional orientada al despliegue, operación y administración de soluciones sobre Google Cloud.', kind: 'certification', status: 'completed' },
+  { title: 'Ruta formativa Full Stack', provider: 'Coderhouse', period: '2024–2025', description: 'Seis cursos completados: Desarrollo Web, JavaScript, React y tres niveles de Backend, culminando en testing, documentación de APIs, manejo de errores, performance, escalabilidad y Docker.', kind: 'program', status: 'completed' },
+  { title: 'Data Analytics', provider: 'Coderhouse', period: '2025', description: 'Análisis de datos, modelado de bases de datos, SQL, Power BI, DAX, estadística y visualización.', kind: 'course', status: 'completed' },
+  { title: 'Formación avanzada en MongoDB', provider: 'LinkedIn Learning', period: '2025', description: 'Dos cursos enfocados en modelado de datos y Aggregation Pipeline para análisis y manipulación de información.', kind: 'program', status: 'completed' },
+  { title: 'Machine Learning with Python Essentials', provider: 'Universidad de Chile · FCFM', period: '2024', description: 'Formación complementaria en machine learning con Python.', kind: 'course', status: 'completed' },
+  { title: 'Build Infrastructure with Terraform on Google Cloud', provider: 'Google Cloud Skills Boost', period: '2026', description: 'Skill badge práctico sobre infraestructura como código con Terraform en Google Cloud.', kind: 'badge', status: 'completed' },
+  { title: 'Implement Cloud Security Fundamentals on Google Cloud', provider: 'Google Cloud Skills Boost', period: '2026', description: 'Skill badge práctico sobre fundamentos de seguridad en entornos Google Cloud.', kind: 'badge', status: 'completed' },
+  { title: 'Diseño y Gestión Ágil de Proyectos', provider: 'Fundación Telefónica Movistar Chile', period: '2025 · 100 horas', description: 'Diplomado con contenidos de Design Thinking, metodologías ágiles, enfoques Lean y gestión de proyectos.', kind: 'diploma', status: 'completed' },
+]
+
+export const currentLearning: LearningItem[] = [
+  { title: 'Google IT Automation with Python', provider: 'Google / Coursera', period: '2026', description: 'Programa de siete cursos. El primer módulo está completado y el segundo, sobre interacción con el sistema operativo mediante Python, está en desarrollo.', kind: 'program', status: 'in-progress' },
+]
+
+export const languages: LearningItem[] = [
+  { title: 'Inglés B2 intermedio alto', provider: 'EF SET', period: '2025 · 59/100', description: 'Evaluación de dominio de inglés mediante EF SET.', kind: 'language', status: 'completed' },
 ]

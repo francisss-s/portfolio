@@ -62,3 +62,12 @@ React Router 8 requiere normalizar el basename con barra final. El build de Page
 - [x] Derivar el base path desde la configuración real de GitHub Pages.
 - [x] Ejecutar el pipeline de verificación en pull requests sin desplegar.
 - [x] Validar todas las rutas prerenderizadas antes de subir el artefacto.
+- [x] Actualizar `pnpm/action-setup` a v6 para ejecutar el action sobre Node 24 sin compatibilidad forzada.
+
+## Formación complementaria
+
+- [x] Modelar formación seleccionada, estudios activos e idioma en la fuente tipada.
+- [x] Incorporar la selección a `/trayectoria` sin duplicar módulos ni credenciales pendientes.
+- [x] Verificar tipos, lint, pruebas y build.
+
+La trayectoria ampliada pasa typecheck, lint, seis pruebas y build con `BASE_PATH=/portfolio`. Typecheck y build deben ejecutarse secuencialmente porque ambos regeneran `.react-router/types`.
