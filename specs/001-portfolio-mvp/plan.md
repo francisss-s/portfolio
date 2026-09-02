@@ -9,6 +9,8 @@ Mantener Route Modules delgados que componen la feature `portfolio-home`. La nav
 
 La salida continuará siendo prerender estático de React Router, con `BASE_PATH=/portfolio` en GitHub Actions para GitHub Pages.
 
+GitHub Pages será la fuente del `base_path` mediante `actions/configure-pages`, evitando acoplar el workflow al nombre actual del repositorio. Pull requests ejecutarán instalación, typecheck, pruebas, lint, build y validación del artefacto sin publicar; solo `main` o una ejecución manual podrán subir y desplegar el artefacto.
+
 El framework se actualiza a React Router 8.3.1 junto con React 19.2.7 o superior. Desarrollo y CI usan Node 24.20.0 LTS, declarado también mediante `engines`; esta versión satisface el mínimo requerido por React Router 8. Los comportamientos antes controlados por future flags pasan a ser valores predeterminados y los flags se eliminan.
 
 El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigentes: ESLint 10, Vite 8, Vitest 4 y jsdom 30, junto con sus plugins y tipos compatibles. TypeScript se mantiene en 6.0.3, la versión más reciente dentro del rango soportado por `typescript-eslint` 8.69. Al ser dependencias de desarrollo, la migración no debe alterar el contenido ni el comportamiento observable del portafolio.

@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,14 +13,12 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      BASE_PATH: /portfolio
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -33,6 +33,9 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v6
       - name: Check types
         run: pnpm run typecheck
       - name: Run tests
@@ -41,16 +44,33 @@ jobs:
         run: pnpm run lint
       - name: Build
         run: pnpm run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - name: Prepare GitHub Pages artifact
-        run: cp -R build/client/portfolio/. build/client/
-      - name: Configure Pages
-        uses: actions/configure-pages@v6
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          if [ -n "$BASE_PATH" ]; then
+            cp -R "build/client${BASE_PATH}/." build/client/
+          fi
+      - name: Validate static artifact
+        run: |
+          test -f build/client/index.html
+          test -f build/client/proyectos/index.html
+          test -f build/client/proyectos/sistema-gestor-documental/index.html
+          test -f build/client/proyectos/planificacion-productiva-mrp/index.html
+          test -f build/client/proyectos/optimizacion-rutas/index.html
+          test -f build/client/trayectoria/index.html
+          test -f build/client/perfil/index.html
+          test -d build/client/assets
       - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: build/client
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

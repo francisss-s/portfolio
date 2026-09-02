@@ -59,3 +59,6 @@ El caso documental pasa typecheck, lint, cinco pruebas y build. La ruta prerende
 React Router 8 requiere normalizar el basename con barra final. El build de Pages genera el árbol estático bajo `build/client/portfolio`; el workflow promueve todo ese árbol a la raíz del artefacto antes de publicarlo.
 
 - [x] Alinear desarrollo, `package.json` y GitHub Actions con Node 24.20.0 LTS.
+- [x] Derivar el base path desde la configuración real de GitHub Pages.
+- [x] Ejecutar el pipeline de verificación en pull requests sin desplegar.
+- [x] Validar todas las rutas prerenderizadas antes de subir el artefacto.
