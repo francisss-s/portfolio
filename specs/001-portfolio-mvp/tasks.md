@@ -81,3 +81,18 @@ La trayectoria ampliada pasa typecheck, lint, seis pruebas y build con `BASE_PAT
 - [x] Verificar dependencias, tipos, lint, pruebas y build.
 
 TypeScript 6.0.3 y el compilador nativo TypeScript 7.0.2 aceptan el proyecto. El chequeo experimental permanece separado y no bloqueante hasta que `typescript-eslint` declare soporte oficial. Typecheck, lint, seis pruebas y build pasan con `@types/node` alineado a Node 24.
+
+## Runner de despliegue
+
+- [x] Confirmar el origen externo del warning `DEP0040` de `actions/deploy-pages@v5`.
+- [x] Mover únicamente la publicación ligera a `ubuntu-slim`.
+- [x] Conservar la construcción y sus controles en `ubuntu-latest`.
+
+## Seguridad de pnpm
+
+- [x] Exigir el rango de Node declarado durante la instalación.
+- [x] Bloquear dependencias transitivas desde fuentes exóticas.
+- [x] Impedir degradaciones de confianza entre publicaciones recientes.
+- [x] Corregir el requisito de Node documentado y verificar la instalación.
+
+La instalación congelada valida 322 entradas contra las políticas de suministro. `semver@6.3.1` requirió aplicar la excepción temporal general recomendada para publicaciones de más de un año, anteriores al uso habitual de procedencia firmada. Typecheck, lint, seis pruebas y build pasan sin modificar el lockfile.

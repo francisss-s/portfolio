@@ -1,2 +1,6 @@
 allowBuilds:
   esbuild: true
+blockExoticSubdeps: true
+engineStrict: true
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 525600

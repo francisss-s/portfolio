@@ -2,7 +2,7 @@
 
 Portafolio de Francisco Fuentes, construido con React Router 8 (Framework Mode), React, TypeScript, Vite y CSS Modules.
 
-Requiere Node.js 20.19 o superior.
+Requiere Node.js 24.20.x.
 
 ```bash
 pnpm install
