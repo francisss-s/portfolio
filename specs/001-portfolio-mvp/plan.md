@@ -19,6 +19,10 @@ El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigente
 
 Hasta que `typescript-eslint` declare compatibilidad con TypeScript 7, el compilador estable seguirá bloqueando el pipeline principal. Un workflow experimental semanal y manual ejecutará TypeScript 7 de forma no bloqueante para detectar anticipadamente incompatibilidades sin aumentar la duración del despliegue habitual. Los tipos de Node deben seguir el major 24 usado en desarrollo y CI. Dependabot propondrá actualizaciones semanales de npm y GitHub Actions, sin fusión automática.
 
+Dependabot puede actualizar el lockfile con pnpm 11 y conservará `@types/node` dentro del major del runtime. Sus parches y versiones menores se mantienen automatizados; un cambio de major de Node requiere una migración coordinada de runtime, tipos, CI y documentación.
+
+CodeQL analizará JavaScript y TypeScript en un workflow independiente, con permisos mínimos y sin compilar ni instalar dependencias. Se ejecutará en cambios hacia `main`, semanalmente y bajo demanda; sus resultados complementan el lint y Dependabot sin bloquear ni alargar el despliegue de Pages.
+
 La instalación con pnpm exigirá el runtime declarado, bloqueará fuentes transitivas distintas del registro y rechazará degradaciones en la evidencia de confianza de publicaciones del último año. Las versiones más antiguas quedan fuera de esta última regla porque su falta de procedencia firmada es habitual. Se conserva `allowBuilds` limitado a esbuild; pnpm 11 ya retrasa por defecto durante 24 horas la resolución de paquetes recién publicados. Los workflows fijan `pnpm/setup@v2.1.0`, primera versión que declara el input `require-lockfile`, y ejecutan la instalación explícitamente para evitar el lanzamiento interno mediante `shell: true`.
 
 ## Archivos
@@ -37,6 +41,7 @@ La instalación con pnpm exigirá el runtime declarado, bloqueará fuentes trans
 - GitHub Pages: rutas declaradas y prerenderizadas bajo el `BASE_PATH` configurado.
 - TypeScript 7: comprobación aislada y no bloqueante mientras el parser de ESLint no lo soporte oficialmente.
 - Cadena de suministro: una dependencia legítima que cambie de origen o reduzca su evidencia de publicación deberá revisarse explícitamente antes de instalarse.
+- Análisis estático: CodeQL usa su suite predeterminada y `build-mode: none`, suficiente para este frontend JavaScript/TypeScript y sin duplicar el pipeline de construcción.
 - Casos incompletos: las páginas de proyecto solo presentarán evidencia ya revisada, sin inventar arquitectura, estados o resultados.
 - Datos pendientes: correo y CV se omiten mientras su valor sea `null`.
 

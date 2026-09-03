@@ -99,3 +99,10 @@ La instalación congelada valida 322 entradas contra las políticas de suministr
 
 - [x] Fijar `pnpm/setup@v2.1.0` para que `require-lockfile` sea un input reconocido.
 - [x] Ejecutar `pnpm install` como step explícito para evitar el warning interno `DEP0190`.
+- [x] Verificar Dependabot con pnpm 11 y bloquear upgrades mayores desalineados de `@types/node`.
+
+## Análisis de seguridad
+
+- [x] Añadir CodeQL v4 para JavaScript y TypeScript con permisos mínimos.
+- [x] Ejecutar el análisis en cambios de `main`, semanalmente y bajo demanda.
+- [x] Mantener CodeQL separado del build y despliegue de GitHub Pages.
