@@ -19,7 +19,7 @@ El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigente
 
 Hasta que `typescript-eslint` declare compatibilidad con TypeScript 7, el compilador estable seguirá bloqueando el pipeline principal. Un workflow experimental semanal y manual ejecutará TypeScript 7 de forma no bloqueante para detectar anticipadamente incompatibilidades sin aumentar la duración del despliegue habitual. Los tipos de Node deben seguir el major 24 usado en desarrollo y CI. Dependabot propondrá actualizaciones semanales de npm y GitHub Actions, sin fusión automática.
 
-La instalación con pnpm exigirá el runtime declarado, bloqueará fuentes transitivas distintas del registro y rechazará degradaciones en la evidencia de confianza de publicaciones del último año. Las versiones más antiguas quedan fuera de esta última regla porque su falta de procedencia firmada es habitual. Se conserva `allowBuilds` limitado a esbuild; pnpm 11 ya retrasa por defecto durante 24 horas la resolución de paquetes recién publicados.
+La instalación con pnpm exigirá el runtime declarado, bloqueará fuentes transitivas distintas del registro y rechazará degradaciones en la evidencia de confianza de publicaciones del último año. Las versiones más antiguas quedan fuera de esta última regla porque su falta de procedencia firmada es habitual. Se conserva `allowBuilds` limitado a esbuild; pnpm 11 ya retrasa por defecto durante 24 horas la resolución de paquetes recién publicados. Los workflows fijan `pnpm/setup@v2.1.0`, primera versión que declara el input `require-lockfile`, y ejecutan la instalación explícitamente para evitar el lanzamiento interno mediante `shell: true`.
 
 ## Archivos
 

@@ -96,3 +96,6 @@ TypeScript 6.0.3 y el compilador nativo TypeScript 7.0.2 aceptan el proyecto. El
 - [x] Corregir el requisito de Node documentado y verificar la instalación.
 
 La instalación congelada valida 322 entradas contra las políticas de suministro. `semver@6.3.1` requirió aplicar la excepción temporal general recomendada para publicaciones de más de un año, anteriores al uso habitual de procedencia firmada. Typecheck, lint, seis pruebas y build pasan sin modificar el lockfile.
+
+- [x] Fijar `pnpm/setup@v2.1.0` para que `require-lockfile` sea un input reconocido.
+- [x] Ejecutar `pnpm install` como step explícito para evitar el warning interno `DEP0190`.
