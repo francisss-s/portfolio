@@ -14,25 +14,24 @@ permissions:
 
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
+        with:
+          persist-credentials: false
+      - name: Setup pnpm and Node
+        uses: pnpm/setup@v2
         with:
           version: 11.25.0
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24.20.0
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          runtime: node@24.20.0
+          cache: true
+          require-lockfile: true
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v6
@@ -73,6 +72,7 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -15,6 +15,8 @@ El framework se actualiza a React Router 8.3.1 junto con React 19.2.7 o superior
 
 El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigentes: ESLint 10, Vite 8, Vitest 4 y jsdom 30, junto con sus plugins y tipos compatibles. TypeScript se mantiene en 6.0.3, la versión más reciente dentro del rango soportado por `typescript-eslint` 8.69. Al ser dependencias de desarrollo, la migración no debe alterar el contenido ni el comportamiento observable del portafolio.
 
+Hasta que `typescript-eslint` declare compatibilidad con TypeScript 7, el compilador estable seguirá bloqueando el pipeline principal. Un workflow experimental semanal y manual ejecutará TypeScript 7 de forma no bloqueante para detectar anticipadamente incompatibilidades sin aumentar la duración del despliegue habitual. Los tipos de Node deben seguir el major 24 usado en desarrollo y CI. Dependabot propondrá actualizaciones semanales de npm y GitHub Actions, sin fusión automática.
+
 ## Archivos
 
 - `app/routes/*.tsx`: metadata y composición de cada página.
@@ -29,6 +31,7 @@ El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigente
 - Navegación activa: `NavLink` expondrá `aria-current` en rutas reales.
 - Mapa ornamental: SVG decorativo oculto y lista HTML equivalente.
 - GitHub Pages: rutas declaradas y prerenderizadas bajo el `BASE_PATH` configurado.
+- TypeScript 7: comprobación aislada y no bloqueante mientras el parser de ESLint no lo soporte oficialmente.
 - Casos incompletos: las páginas de proyecto solo presentarán evidencia ya revisada, sin inventar arquitectura, estados o resultados.
 - Datos pendientes: correo y CV se omiten mientras su valor sea `null`.
 
@@ -38,5 +41,3 @@ El toolchain de desarrollo se actualiza de forma coordinada a sus majors vigente
 - Revisión a 320 px, tablet y escritorio.
 - Navegación solo con teclado y foco visible.
 - Revisión con `prefers-reduced-motion`.
-
-El entorno actual no ofrece Node.js/npm; los checks se ejecutarán cuando el runtime esté disponible y cualquier bloqueo se reportará sin declararlos exitosos.

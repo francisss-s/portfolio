@@ -1,0 +1,31 @@
+name: TypeScript 7 compatibility
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Setup pnpm and Node
+        uses: pnpm/setup@v2
+        with:
+          version: 11.25.0
+          runtime: node@24.20.0
+          cache: true
+          require-lockfile: true
+      - name: Generate React Router types
+        run: pnpm exec react-router typegen
+      - name: Check with TypeScript 7
+        run: pnpm dlx typescript@7.0.2 --noEmit

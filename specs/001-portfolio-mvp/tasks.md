@@ -62,7 +62,7 @@ React Router 8 requiere normalizar el basename con barra final. El build de Page
 - [x] Derivar el base path desde la configuración real de GitHub Pages.
 - [x] Ejecutar el pipeline de verificación en pull requests sin desplegar.
 - [x] Validar todas las rutas prerenderizadas antes de subir el artefacto.
-- [x] Actualizar `pnpm/action-setup` a v6 para ejecutar el action sobre Node 24 sin compatibilidad forzada.
+- [x] Migrar al sucesor `pnpm/setup@v2` para instalar pnpm y Node 24 sin compatibilidad forzada.
 
 ## Formación complementaria
 
@@ -71,3 +71,13 @@ React Router 8 requiere normalizar el basename con barra final. El build de Page
 - [x] Verificar tipos, lint, pruebas y build.
 
 La trayectoria ampliada pasa typecheck, lint, seis pruebas y build con `BASE_PATH=/portfolio`. Typecheck y build deben ejecutarse secuencialmente porque ambos regeneran `.react-router/types`.
+
+## Preparación para TypeScript 7
+
+- [x] Alinear `@types/node` con Node 24 LTS.
+- [x] Añadir una comprobación experimental semanal y manual con TypeScript 7.
+- [x] Configurar actualizaciones semanales para npm y GitHub Actions.
+- [x] Corregir la versión de React Router documentada en el README.
+- [x] Verificar dependencias, tipos, lint, pruebas y build.
+
+TypeScript 6.0.3 y el compilador nativo TypeScript 7.0.2 aceptan el proyecto. El chequeo experimental permanece separado y no bloqueante hasta que `typescript-eslint` declare soporte oficial. Typecheck, lint, seis pruebas y build pasan con `@types/node` alineado a Node 24.

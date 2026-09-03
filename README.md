@@ -1,6 +1,6 @@
 # Portfolio
 
-Portafolio de Francisco Fuentes, construido con React Router 7 (Framework Mode), React, TypeScript, Vite y CSS Modules.
+Portafolio de Francisco Fuentes, construido con React Router 8 (Framework Mode), React, TypeScript, Vite y CSS Modules.
 
 Requiere Node.js 20.19 o superior.
 
